@@ -56,19 +56,27 @@ elif conference:
     ws['A11'] = location
 
 if webinar:
-    description = input('Enter description: ')
-    ws['A14'] = description
+    os.system("open /Users/cameronhakenson/triage_description.txt")
+    blank_read = input('Press Enter to continue...')
+    with open('triage_description.txt') as file_description:
+        ws['A14'] = file_description.read()
+    with open('triage_description.txt', 'w') as file_description:
+        file_description.write('')
     ws['A15'] = ""
 elif conference:
-    agenda = input('Enter agenda: ')
-    ws['A15'] = agenda
+    os.system("open /Users/cameronhakenson/triage_agenda.txt")
+    blank_read = input('Press Enter to continue...')
+    with open('triage_agenda.txt') as file_agenda:
+        ws['A15'] = 'Agenda: ' + file_agenda.read()
+    with open('triage_agenda.txt', 'w') as file_agenda:
+        file_agenda.write('')
     ws['a14'] = ''
 
 if webinar:
     ws['A19'] = ''
 elif conference:
     link_agenda = input('Enter agenda link: ')
-    ws['A19'] = link_agenda
+    ws['A19'] = f'Link to full agenda: {link_agenda}'
 
 speakers = input('Enter speakers: ')
 if speakers == "" or speakers == " ":
