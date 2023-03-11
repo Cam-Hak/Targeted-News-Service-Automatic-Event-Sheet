@@ -1,4 +1,4 @@
 # Targeted-News-Service-Automatic-Event-Sheet
-This program takes data from event websites and automatically formats them into an excel spreadsheet.
 
-In order for this to work you need to adjust the spreadsheet file name inside the .py file to whatever spreadsheet you are using.
+This program is based off of what I do for the website Targeted News Service. I scrape event information off websites and put it in a google sheet in a certain format. This script allows me to paste website information into the cmd prompt when ran, and it automatically opens an excel spreadsheet with the information formatted. From here all I have to do is copy and paste the cell into the shared google sheet.
+
