@@ -13,7 +13,7 @@ full_date = f"{today.month}/{today.day}/23"
 
 ws['A1'] = f'CAMERON {full_date}'
 ws['A12'] = 'Overview from the organization:'
-ws['A21'] = '* * *' ; ws['A23'] = '* * *' ; ws['A25'] = '* * *'
+ws['A23'] = '* * *' ; ws['A25'] = '* * *'
 ws['A26'] = 'T41-Cameron'
 
 date = ""
@@ -86,8 +86,10 @@ else:
 
 sponsors = input('Enter sponsors: ')
 if sponsors == "" or sponsors == " ":
+    ws['A21'] = ""
     ws['A22'] = ""
 else:
+    ws['A21'] = '* * *'
     ws['A22'] = f'Sponsors: {sponsors}'
 
 register = input('Enter registration link: ')
