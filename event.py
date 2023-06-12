@@ -36,19 +36,40 @@ def event_check():
 
 def webinar_date(month, day, year):
     time = input('Enter the time: ')
-    ws['A9'] = f'Date of event: {month}. {day}, {year}, {time}'
-    date = f' Webinar Scheduled for {month}. {day}, {year}'
+    if len(month) > 3:
+        ws['A9'] = f'Date of event: {month} {day}, {year}, {time}'
+        date = f'Webinar Scheduled for {month} {day}, {year}'
+    else:
+        ws['A9'] = f'Date of event: {month}. {day}, {year}, {time}'
+        date = f'Webinar Scheduled for {month}. {day}, {year}'
     return date
 
 def conference_date(month, day, year):
-    ws['A9'] = f'Date of event: {month}. {day}, {year}'
-    date = f' Conference Scheduled for {month}. {day}, {year}'
+    if len(month) > 3:
+        ws['A9'] = f'Date of event: {month} {day}, {year}'
+        date = f'Conference Scheduled for {month} {day}, {year}'
+    else:
+        ws['A9'] = f'Date of event: {month}. {day}, {year}'
+        date = f'Conference Scheduled for {month}. {day}, {year}'
     return date
 
 def title_section(date):
+    kept_lower = ['and', 'of', 'the', 'as', 'for', 'or', 'if']
     title = input('Enter the title: ')
-    title_and_date = title.title() + date
-    ws['A8'] = f'Title: {title.title()}'
+    title_format = title.split()
+    formatted = ''
+    for words in title_format:
+        if words != words.upper() and '\'' not in words and words not in kept_lower:
+                formatted += words.title() + " "
+        elif '\'' in words:
+            first_letter = words[0].upper()
+            formatted += first_letter + words[1:] + " "
+        elif words in kept_lower:
+            formatted += words + " "
+        else:
+            formatted += words + " "
+    title_and_date = formatted + date
+    ws['A8'] = f'Title: {formatted}'
     ws['A7'] = title_and_date
 
 def con_location():
